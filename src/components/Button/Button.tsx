@@ -1,6 +1,7 @@
 import React from "react";
+import "../../index.css";
 
-export type ButtonProps = {
+export interface ButtonProps extends React.ComponentProps<"button"> {
   label: string;
   onClick: () => void;
   disabled?: boolean;
@@ -8,7 +9,7 @@ export type ButtonProps = {
   size?: "sm" | "md" | "lg";
   fullWidth?: boolean; // Optional prop for full-width buttons
   icon?: React.ReactNode; // Optional prop for icons
-};
+}
 
 export const Button = ({
   label,
@@ -18,6 +19,7 @@ export const Button = ({
   variant = "primary",
   fullWidth = false,
   icon,
+  ...props
 }: ButtonProps) => {
   return (
     <button
@@ -26,6 +28,7 @@ export const Button = ({
       } disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2`}
       disabled={disabled}
       onClick={onClick}
+      {...props}
     >
       {icon && <span>{icon}</span>}
       {label}
