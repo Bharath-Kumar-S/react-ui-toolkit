@@ -10,14 +10,15 @@
   --tertiary-color: #d1d5db;
   --danger-color: #d82323;
 
+  /* hover colors */
   --primary-hover-color: #1d4ed8;
   --secondary-hover-color: #475569;
   --tertiary-hover-color: #9ca3af;
 
   /* Text Colors */
-  --button-primary-text: #ffffff;
-  --button-secondary-text: #ffffff;
-  --button-tertiary-text: #000000;
+  --button-primary-text: #fff;
+  --button-secondary-text: #fff;
+  --button-tertiary-text: #000;
 
   /* Border Colors */
   --button-primary-border: #1e40af;
@@ -41,9 +42,9 @@
   --radius-lg: 0.6rem; /* Slightly reduced */
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle */
-  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle */
-  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.15); /* Slightly Subtle */
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / 10%); /* Subtle */
+  --shadow-md: 0 4px 6px rgb(0 0 0 / 10%); /* Subtle */
+  --shadow-lg: 0 10px 15px rgb(0 0 0 / 20%); /* Slightly Subtle */
 
   /* Z-Index */
   --z-index-low: 10;
@@ -56,14 +57,12 @@
   --primary-color: #1d4ed8;
   --secondary-color: #94a3b8;
   --tertiary-color: #9ca3af;
-
   --primary-hover-color: #2563eb;
   --secondary-hover-color: #6b7280;
   --tertiary-hover-color: #6b7280;
-
-  --button-primary-text: #ffffff;
-  --button-secondary-text: #ffffff;
-  --button-tertiary-text: #000000;
+  --button-primary-text: #fff;
+  --button-secondary-text: #fff;
+  --button-tertiary-text: #000;
 }
 
 /* 🖌️ Button Variants */
