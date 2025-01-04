@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc -b && vite build",
-    "lint": "eslint ."
+    "lint": "eslint . --ext ts,tsx",
+    "lint:fix": "eslint . --ext ts,tsx --fix"
   },
   "dependencies": {
     "react": "^18.3.1",
