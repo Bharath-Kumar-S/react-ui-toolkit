@@ -6,14 +6,17 @@ module.exports = {
       colors: {
         primary: "var(--primary-color)",
         secondary: "var(--secondary-color)",
-        accent: "var(--accent-color)",
+        tertiary: "var(--tertiary-color)",
       },
-      fontSize: {
-        xs: "var(--font-size-xs)",
-        sm: "var(--font-size-sm)",
-        md: "var(--font-size-md)",
-        lg: "var(--font-size-lg)",
-        xl: "var(--font-size-xl)",
+      textColor: {
+        "button-primary-text": "var(--button-primary-text)",
+        "button-secondary-text": "var(--button-secondary-text)",
+        "button-tertiary-text": "var(--button-tertiary-text)",
+      },
+      borderColor: {
+        "button-primary-border": "var(--button-primary-border)",
+        "button-secondary-border": "var(--button-secondary-border)",
+        "button-tertiary-border": "var(--button-tertiary-border)",
       },
       spacing: {
         xs: "var(--spacing-xs)",
@@ -27,9 +30,9 @@ module.exports = {
         lg: "var(--radius-lg)",
       },
       boxShadow: {
-        light: "var(--shadow-light)",
+        sm: "var(--shadow-sm)",
         md: "var(--shadow-md)",
-        dark: "var(--shadow-dark)",
+        lg: "var(--shadow-lg)",
       },
       zIndex: {
         low: "var(--z-index-low)",

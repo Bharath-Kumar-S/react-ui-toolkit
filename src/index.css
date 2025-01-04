@@ -2,34 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 🎨 CSS Variables */
 :root {
   /* Primary and Secondary Colors */
   --primary-color: #1e40af;
   --secondary-color: #64748b;
-  --accent-color: #f59e0b;
+  --tertiary-color: #d1d5db;
+  --danger-color: #d82323;
+
+  --primary-hover-color: #1d4ed8;
+  --secondary-hover-color: #475569;
+  --tertiary-hover-color: #9ca3af;
+
+  /* Text Colors */
+  --button-primary-text: #ffffff;
+  --button-secondary-text: #ffffff;
+  --button-tertiary-text: #000000;
+
+  /* Border Colors */
+  --button-primary-border: #1e40af;
+  --button-secondary-border: #64748b;
+  --button-tertiary-border: #d1d5db;
 
   /* Font Sizes */
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 1rem;
-  --font-size-md: 1.25rem;
-  --font-size-lg: 1.5rem;
-  --font-size-xl: 2rem;
+  --font-size-sm: 0.75rem; /* Reduced */
+  --font-size-md: 0.875rem; /* Reduced */
+  --font-size-lg: 1rem; /* Reduced */
 
   /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
+  --spacing-xs: 0.25rem; /* Reduced */
+  --spacing-sm: 0.5rem; /* Reduced */
+  --spacing-md: 0.75rem; /* Reduced */
+  --spacing-lg: 1rem; /* Reduced */
 
   /* Border Radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 1rem;
+  --radius-sm: 0.2rem; /* Slightly reduced */
+  --radius-md: 0.4rem; /* Slightly reduced */
+  --radius-lg: 0.6rem; /* Slightly reduced */
 
   /* Shadows */
-  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-dark: 0 10px 15px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle */
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle */
+  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.15); /* Slightly Subtle */
 
   /* Z-Index */
   --z-index-low: 10;
@@ -37,31 +51,81 @@
   --z-index-high: 1000;
 }
 
+/* 🌙 Dark Mode */
 .dark {
   --primary-color: #1d4ed8;
   --secondary-color: #94a3b8;
-  --accent-color: #fbbf24;
+  --tertiary-color: #9ca3af;
 
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 1rem;
-  --font-size-md: 1.25rem;
-  --font-size-lg: 1.5rem;
-  --font-size-xl: 2rem;
+  --primary-hover-color: #2563eb;
+  --secondary-hover-color: #6b7280;
+  --tertiary-hover-color: #6b7280;
 
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
+  --button-primary-text: #ffffff;
+  --button-secondary-text: #ffffff;
+  --button-tertiary-text: #000000;
+}
 
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 1rem;
+/* 🖌️ Button Variants */
+.button-primary {
+  background-color: var(--primary-color);
+  color: var(--button-primary-text);
+  border: 1px solid var(--button-primary-border);
+}
 
-  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-dark: 0 10px 15px rgba(0, 0, 0, 0.2);
+.button-secondary {
+  background-color: var(--secondary-color);
+  color: var(--button-secondary-text);
+  border: 1px solid var(--button-secondary-border);
+}
 
-  --z-index-low: 10;
-  --z-index-medium: 100;
-  --z-index-high: 1000;
+.button-tertiary {
+  background-color: var(--tertiary-color);
+  color: var(--button-tertiary-text);
+  border: 1px solid var(--button-tertiary-border);
+}
+
+.button-danger {
+  background-color: var(--danger-color);
+  color: var(--button-primary-text);
+  border: 1px solid var(--button-tertiary-border);
+}
+
+/* 🖌️ Button Sizes */
+.button-sm {
+  padding: var(--spacing-xs) var(--spacing-xs); /* Compact padding */
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.button-md {
+  padding: var(--spacing-xs) var(--spacing-sm); /* Moderate padding */
+  font-size: var(--font-size-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.button-lg {
+  padding: var(--spacing-sm) var(--spacing-md); /* Spacious padding */
+  font-size: var(--font-size-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ✨ Utility Styles */
+.button-hover {
+  transition: all 0.2s ease-in-out;
+}
+
+.button-primary:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.button-secondary:hover {
+  background-color: var(--secondary-hover-color);
+}
+
+.button-tertiary:hover {
+  background-color: var(--tertiary-hover-color);
 }
