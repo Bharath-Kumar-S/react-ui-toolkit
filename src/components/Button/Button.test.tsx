@@ -12,6 +12,8 @@ describe('Button test:', () => {
         onClick={() => {}}
       />
     )
+    screen.getByRole('button')
+    expect(screen.getByRole('button')).toBeDefined()
   })
 
   it('should render label', () => {
@@ -22,6 +24,7 @@ describe('Button test:', () => {
       />
     )
     screen.getByText('Testing')
+    expect(screen.getByText('Testing')).toBeDefined()
   })
 
   it('should be disabled', () => {
