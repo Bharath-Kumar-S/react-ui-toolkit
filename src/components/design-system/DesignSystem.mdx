@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Design System/Overview" />
+
+# Design System
+
+Our design system is built with a focus on consistency, accessibility, and maintainability. It uses CSS variables to manage design tokens across the application.
+
+## Structure
+
+The design system is organized into several key areas:
+
+- **Colors**: Primary, secondary, and tertiary colors with hover states
+- **Typography**: Consistent font sizes across the application
+- **Spacing**: A systematic spacing scale
+- **Components**: Reusable UI components like buttons
+- **Shadows**: Elevation system for depth
+- **Border Radius**: Consistent corner rounding
+
+## Usage
+
+All design tokens are available as CSS variables and can be accessed using `var()`:
+
+```css
+.my-element {
+  color: var(--primary-color);
+  padding: var(--spacing-md);
+  font-size: var(--font-size-md);
+  border-radius: var(--radius-md);
+}
+```
+
+## Dark Mode
+
+The design system includes dark mode support. Add the `.dark` class to enable dark mode styles.
