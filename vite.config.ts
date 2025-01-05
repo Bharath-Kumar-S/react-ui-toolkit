@@ -11,7 +11,7 @@ export default defineConfig({
   plugins: [
     react(),
     libInjectCss(),
-    dts({ exclude: ['**/*.stories.tsx', 'src/test', '**/*.test.tsx'] }),
+    dts({ exclude: ['**/*.stories.tsx', 'src/test', '**/*.test.tsx', 'vite.config.ts'] }),
   ],
   build: {
     lib: {
