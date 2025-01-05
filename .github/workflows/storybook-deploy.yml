@@ -33,15 +33,19 @@ jobs:
         run: npm install
 
       - name: Build Storybook
-        run: npm run build-storybook-ci
+        run: npm run build-storybook
 
       - name: Verify Build Output
         run: |
-          ls -a
-          ls -a storybook-static
+          ls -a ./storybook-static
+          echo "Current Directory: $(pwd)"
+
+      - name: Set Proper File Permissions
+        run: chmod -R 755 ./storybook-static
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
+          keep_files: false
