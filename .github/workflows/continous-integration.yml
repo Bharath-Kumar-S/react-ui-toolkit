@@ -1,0 +1,60 @@
+name: Continous Integration
+
+on:
+  push:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2  
+      with:
+        node-version: '20'  
+
+    - name: Install dependencies
+      run: |
+        npm install
+
+    - name: Run Linter
+      run: |
+        npm run lint
+
+    - name: Run Prettier
+      run: |
+        npm run format
+
+    - name: Run Stylelint
+      run: |
+        npm run stylelint
+
+    - name: Run tests
+      run: |
+        npm run test  
+
+    - name: Upload test results
+      if: failure() 
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-results
+        path: test-results.xml 
+
+    - name: Cache node modules
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm  
+        key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}  
+
+    - name: Build only
+      run: |
+        npm run build
