@@ -177,6 +177,4 @@ npm run stylelint:fix
 
 Feel free to fork this repository, submit issues, and make pull requests. Please make sure that your code follows the project's linting and formatting rules.
 
-
 This should now be properly structered and released in npm. Let me know if you need any further adjustments and I am happy to collabrate!
-
