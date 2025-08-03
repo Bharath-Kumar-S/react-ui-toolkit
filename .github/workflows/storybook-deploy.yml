@@ -47,7 +47,7 @@ jobs:
         run: chmod -R 755 ./storybook-static
 
       - name: Upload Artifact for GitHub Pages
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./storybook-static
 
