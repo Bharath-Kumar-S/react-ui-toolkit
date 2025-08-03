@@ -1,67 +1,57 @@
-name: Deploy Storybook to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
-  workflow_dispatch:
-  pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - main
   push:
-    branches:
-      - main
+    branches: [main]  # or "master" depending on your repo
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
 
-      - name: Set Git user
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Build Storybook (or other static site)
+        run: npm run build-storybook  # change if different
 
-      - name: Build Storybook
-        run: npm run build-storybook
-
-      - name: Verify Build Output
-        run: |
-          ls -a ./storybook-static
-          echo "Current Directory: $(pwd)"
-
-      - name: Set Proper File Permissions
-        run: chmod -R 755 ./storybook-static
-
-      - name: Upload Artifact for GitHub Pages
+      - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./storybook-static
           name: github-pages
 
   deploy-pages:
-    needs: deploy
+    needs: build
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     permissions:
       pages: write
       id-token: write
-    environment: github-pages  # ✅ Required!
 
     steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v3
         with:
           artifact_name: github-pages
