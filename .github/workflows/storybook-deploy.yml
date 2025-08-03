@@ -58,9 +58,10 @@ jobs:
     permissions:
       pages: write
       id-token: write
+    environment: github-pages  # ✅ Required!
 
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v3
         with:
-          artifact_name: github-pages  # ✅ Must match the upload step
+          artifact_name: github-pages
