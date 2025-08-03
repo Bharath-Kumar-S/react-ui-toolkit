@@ -2,17 +2,19 @@ name: Deploy Storybook to GitHub Pages
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
   pull_request:
-    branches: [main]
     types: [opened, synchronize, reopened]
+    branches:
+      - main
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pages: write
       id-token: write
 
@@ -25,30 +27,37 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Set Git user
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build Storybook
         run: npm run build-storybook
 
-      - name: Upload Storybook Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: storybook-static
-          name: github-pages  # ✅ Set artifact name explicitly
+      - name: Verify Build Output
+        run: |
+          ls -a ./storybook-static
+          echo "Current Directory: $(pwd)"
 
-  deploy:
-    needs: build
+      - name: Set Proper File Permissions
+        run: chmod -R 755 ./storybook-static
+
+      - name: Upload Artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./storybook-static
+
+  deploy-pages:
+    needs: deploy
     runs-on: ubuntu-latest
     permissions:
       pages: write
       id-token: write
-    environment:
-      name: github-pages
 
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v3
-        with:
-          artifact_name: github-pages  # ✅ Must match above
